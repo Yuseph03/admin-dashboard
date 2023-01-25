@@ -1,27 +1,90 @@
+body {
+    margin: 0;
+}
+
 .container {
     display: grid;
-    grid: 1fr 4fr/ 1fr 6fr;
+    grid: 0.7fr 4fr/ 1fr 6fr;
+    row-gap: 3em;
     grid-template-areas: 
         "sidebar header"
         "sidebar main";
 }
 
-header {
+.header {
     grid-area: header;
+    border: 1px solid black;
+
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+}
+
+.searchbar-container {
+    grid-row-start: 1;
+
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    grid-template-areas: 
+        "search-bar user-info";
+}
+
+.btn-container {
+    grid-row-start: 2;
+
+    display: grid;
+    grid-template-columns: 1fr 0.6fr 1fr;
+    grid-template-areas: 
+        "username . btns";
+}
+
+.search-bar {
+    grid-area: search-bar;
+}
+
+.user-info {
+    grid-area: user-info;
+}
+
+.username {
+    grid-area: username;
+}
+
+.btns {
+    grid-area: btns;
 }
 
 .sidebar {
     grid-area: sidebar;
+    border: 1px solid black;
+
+    display: flex;
+    flex-direction: column;
 }
 
-.main {
+.sidebar-logo {
+    margin: 1em 0 0 1em;
+}
+
+.navbar nav {
+    margin-left: 1em;
+
+    display: grid;
+    grid-template-rows: repeat(auto-fit, minmax(40px, 0.5fr));
+    row-gap: 0.5em;
+}
+
+.navbar nav .card a {
+    text-decoration: none;
+}
+
+.main-container {
     grid-area: main;
 
     display: grid;
     grid-template-columns: 3fr 1fr;
     grid-template-rows: 1fr 1fr;
-    gap: 15px;
-
+    gap: 2em;
+    margin: 0 0 3em 2em;
 }
 
 .article {
@@ -29,11 +92,14 @@ header {
 
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 15px;
+    grid-template-rows: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 25px;
     position: relative;
 }
 
-.article span {
+.article span,
+.anouncements span,
+.trending span {
     position: absolute;
     top: -25px;
 }
@@ -46,9 +112,17 @@ header {
 
 .anouncements {
     grid-area: 1 / 2 / 2 / 3;
-
+    border: 1px solid black;
+    position: relative;
 }
 
 .trending {
     grid-area: 2 / 2 / 3 / 3;
+    border: 1px solid black;
+    position: relative;
+}
+
+.anounce-block,
+.trend-block {
+    padding: 1rem;
 }
